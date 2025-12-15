@@ -1,7 +1,13 @@
-# Flutter-related
-**/Flutter/ephemeral/
-**/Pods/
+# Flutter
+.dart_tool/
+build/
+ios/Pods/
+android/.gradle/
 
-# Xcode-related
-**/dgph
-**/xcuserdata/
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

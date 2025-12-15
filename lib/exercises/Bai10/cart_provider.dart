@@ -6,10 +6,13 @@ class CartProvider with ChangeNotifier {
 
   List<Product> get items => _items;
 
+  int get count => _items.length;
+
   void addToCart(Product product) {
     _items.add(product);
     notifyListeners();
   }
+  
 
   void removeFromCart(Product product) {
     _items.remove(product);

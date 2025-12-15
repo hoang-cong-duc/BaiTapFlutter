@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'Product_provider.dart';
-import 'cart_provider.dart';
 import 'product_detail_screen.dart';
 import 'cart_screen.dart';
 
@@ -11,13 +10,10 @@ class Ex10Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => ProductProvider()..loadProducts(),
-        ),
-        ChangeNotifierProvider(create: (_) => CartProvider()),
-      ],
+    // ❗ CHỈ BỌC ProductProvider
+    // CartProvider ĐÃ BỌC Ở main.dart
+    return ChangeNotifierProvider(
+      create: (_) => ProductProvider()..loadProducts(),
       child: const _Ex10View(),
     );
   }
@@ -38,25 +34,24 @@ class _Ex10ViewState extends State<_Ex10View> {
     final productProvider = context.watch<ProductProvider>();
 
     final products = productProvider.products
-        .where((p) => p.title.toLowerCase().contains(keyword.toLowerCase()))
+        .where(
+          (p) => p.title.toLowerCase().contains(keyword.toLowerCase()),
+        )
         .toList();
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Web API'),
         actions: [
+          
           IconButton(
             icon: const Icon(Icons.shopping_cart),
             onPressed: () {
-              final cartProvider = context.read<CartProvider>();
-
+              // ❗ KHÔNG bọc Provider khi push
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => ChangeNotifierProvider.value(
-                    value: cartProvider,
-                    child: const CartScreen(),
-                  ),
+                  builder: (_) => const CartScreen(),
                 ),
               );
             },
@@ -66,7 +61,7 @@ class _Ex10ViewState extends State<_Ex10View> {
 
       body: Column(
         children: [
-          // 🔍 Ô tìm kiếm (GIỐNG BÀI 9)
+          // 🔍 Ô tìm kiếm
           Padding(
             padding: const EdgeInsets.all(8),
             child: TextField(
@@ -85,7 +80,7 @@ class _Ex10ViewState extends State<_Ex10View> {
             ),
           ),
 
-          // 📦 Grid sản phẩm
+          // 📦 Danh sách sản phẩm
           Expanded(
             child: productProvider.isLoading
                 ? const Center(child: CircularProgressIndicator())
@@ -93,11 +88,11 @@ class _Ex10ViewState extends State<_Ex10View> {
                     padding: const EdgeInsets.all(8),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 8,
-                          crossAxisSpacing: 8,
-                          childAspectRatio: 0.7,
-                        ),
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 8,
+                      crossAxisSpacing: 8,
+                      childAspectRatio: 0.7,
+                    ),
                     itemCount: products.length,
                     itemBuilder: (context, index) {
                       final product = products[index];

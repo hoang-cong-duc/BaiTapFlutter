@@ -9,7 +9,7 @@ import '../exercises/Bai7_Login.dart';
 import '../exercises/Bai8_Register.dart';
 import '../exercises/Bai9/screen.dart';
 import '../exercises/Bai10/bai10_screen.dart';
-import '../exercises/Bai11/login_screen.dart';
+import '../exercises/Bai11/Login_page.dart';
 
 
 
@@ -58,6 +58,6 @@ final List<Exercise> exercises = [
   ),
    Exercise(
     title: 'Bài 11 - KQlogin ',
-    screen: Ex11LoginScreen(),
+    screen: LoginProfile(),
   ),
 ];
