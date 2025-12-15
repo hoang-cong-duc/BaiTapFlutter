@@ -7,14 +7,12 @@ class Locations2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        // Dùng EdgeInsets.fromLTRB để tạo khoảng trống,
-        // nhưng giữ top linh hoạt hơn nếu cần
         padding: const EdgeInsets.fromLTRB(20, 50, 20, 20), 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Header(),
-            const SizedBox(height: 10), // Thêm khoảng cách
+            const SizedBox(height: 10), 
             TitleSection(),
             Search(),
             Expanded(child: GridViewSection()),
@@ -84,7 +82,6 @@ class Locations2 extends StatelessWidget {
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
             children: [
-              // ĐÃ SỬA: Thêm "assets/" vào đường dẫn
               buildImage("assets/images/1.jpg"),
               buildImage("assets/images/2.jpg"),
               buildImage("assets/images/3.jpg"),
@@ -101,7 +98,6 @@ class Locations2 extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         image: DecorationImage(
-          // Đã sửa: AssetImage() sẽ tìm đường dẫn đã sửa
           image: AssetImage(path), 
           fit: BoxFit.cover
         ),

@@ -33,8 +33,6 @@ class Product {
           ? (json['rating']['rate'] as num).toDouble()
           : 0.0,
 
-      /// Nếu API không có trường url → để rỗng
-      /// Hoặc bạn tự gán theo id: "https://fakestoreapi.com/products/ID"
       url: json['url'] ?? "https://fakestoreapi.com/products/${json['id']}",
     );
   }

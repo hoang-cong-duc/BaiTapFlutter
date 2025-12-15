@@ -22,37 +22,35 @@ class CounterApp extends StatefulWidget {
 
 class _CounterAppState extends State<CounterApp> {
   int count = 0;
-  Color randomTextColor = Colors.black; //thêm biến lưu màu ngẫu nhiên
+  Color randomTextColor = Colors.black; 
 
-  // Hàm random màu
   void changeTextColor() {
     final random = Random();
     randomTextColor = Colors.primaries[random.nextInt(Colors.primaries.length)];
   }
 
   Color get textColor {
-    // Ưu tiên màu ngẫu nhiên mỗi lần đổi
     return randomTextColor;
   }
 
   void increase() {
     setState(() {
       count++;
-      changeTextColor(); // đổi màu chữ mỗi lần tăng
+      changeTextColor(); 
     });
   }
 
   void decrease() {
     setState(() {
       count--;
-      changeTextColor(); // đổi màu chữ mỗi lần giảm
+      changeTextColor(); 
     });
   }
 
   void reset() {
     setState(() {
       count = 0;
-      randomTextColor = Colors.black; // khi reset trở lại màu đen
+      randomTextColor = Colors.black; 
     });
   }
 
@@ -83,7 +81,7 @@ class _CounterAppState extends State<CounterApp> {
             style: TextStyle(
               fontSize: 48,
               fontWeight: FontWeight.bold,
-              color: textColor, // hiển thị màu ngẫu nhiên
+              color: textColor, 
             ),
           ),
           const SizedBox(height: 30),

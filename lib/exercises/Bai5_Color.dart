@@ -43,7 +43,6 @@ class _ChangeColorAppState extends State<ChangeColorApp> {
     "Xanh dương"
   ];
 
-  // 👉 Hàm đổi màu ngẫu nhiên
   void _ChangerColor() {
     var random = Random();
     int index = random.nextInt(listColor.length);

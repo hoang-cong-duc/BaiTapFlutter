@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// --- KHỞI TẠO ỨNG DỤNG ---
 
 
 class Locations1 extends StatelessWidget {
@@ -15,7 +14,6 @@ class Locations1 extends StatelessWidget {
   }
 }
 
-// --- 1. MODEL DỮ LIỆU ---
 class Hotel {
   final String name;
   final String ratingText;
@@ -44,11 +42,9 @@ class Hotel {
   });
 }
 
-// --- 2. WIDGET MÀN HÌNH CHÍNH ---
 class SearchResultsScreen extends StatelessWidget {
   const SearchResultsScreen({super.key}); 
 
-  // Dữ liệu khách sạn mẫu (SỬ DỤNG LẠI 'images/anh1.jpg' VÀ TẠO NHIỀU CHỖ NGHỈ)
   final List<Hotel> hotels = const [
     Hotel(
       name: 'aNhill Boutique',
@@ -99,7 +95,6 @@ class SearchResultsScreen extends StatelessWidget {
       includesBreakfast: true,
       imageAsset: 'assets/images/4.jpg',
     ),
-    // THÊM CHỖ NGHỈ ĐỂ KIỂM TRA CHỨC NĂNG CUỘN
     Hotel(
       name: 'Luxury Garden House',
       ratingValue: 9.8,
@@ -129,12 +124,10 @@ class SearchResultsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // AppBar không cuộn
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(130.0), 
         child: Column(
           children: [
-            // --- Top Bar/Search Bar ---
             AppBar(
               automaticallyImplyLeading: false, 
               backgroundColor: const Color(0xFF1E88E5), 
@@ -169,7 +162,6 @@ class SearchResultsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // --- Filter/Sort ---
             Container(
               color: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -186,12 +178,10 @@ class SearchResultsScreen extends StatelessWidget {
         ),
       ),
       
-      // BODY CÓ THỂ CUỘN
       body: SingleChildScrollView( 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // --- Kết quả tìm kiếm Count ---
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
               child: Text(
@@ -200,7 +190,6 @@ class SearchResultsScreen extends StatelessWidget {
               ),
             ),
             
-            // --- Danh sách Khách sạn (Tạo danh sách thẻ từ dữ liệu) ---
             Column(
               children: hotels.map((hotel) {
                 return HotelCard(hotel: hotel);
@@ -215,7 +204,6 @@ class SearchResultsScreen extends StatelessWidget {
   }
 }
 
-// --- 3. WIDGET CON: FilterButton ---
 class FilterButton extends StatelessWidget {
   final IconData icon;
   final String label;
@@ -241,7 +229,6 @@ class FilterButton extends StatelessWidget {
   }
 }
 
-// --- 4. WIDGET CON: HotelCard ---
 class HotelCard extends StatelessWidget {
   final Hotel hotel;
 
@@ -256,7 +243,6 @@ class HotelCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // --- Phần Ảnh và Tag ---
           Container(
             width: 120,
             height: 180,
@@ -266,7 +252,6 @@ class HotelCard extends StatelessWidget {
             ),
             child: Stack( 
               children: [
-                // Ảnh từ assets
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
@@ -279,7 +264,6 @@ class HotelCard extends StatelessWidget {
                     },
                   ),
                 ),
-                // Tag "Bao bữa sáng"
                 if (hotel.includesBreakfast)
                   Align(
                     alignment: Alignment.topLeft,
@@ -302,14 +286,12 @@ class HotelCard extends StatelessWidget {
             ),
           ),
 
-          // --- Phần Thông tin Chi tiết ---
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(top: 8, right: 8, bottom: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Tên Khách sạn và Icon Yêu thích
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -326,7 +308,6 @@ class HotelCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
 
-                  // Rating
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -350,7 +331,6 @@ class HotelCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
 
-                  // Location
                   Row(
                     children: [
                       const Icon(Icons.location_on, size: 14, color: Colors.grey),
@@ -363,14 +343,12 @@ class HotelCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
 
-                  // Details
                   Text(
                     hotel.details,
                     style: const TextStyle(fontSize: 13),
                   ),
                   const SizedBox(height: 8),
 
-                  // Prepayment info (Chỉ hiển thị nếu cần)
                   if (hotel.needsPrepayment)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
@@ -405,7 +383,6 @@ class HotelCard extends StatelessWidget {
                       ),
                     ),
                   
-                  // Giá và Thuế
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Column(

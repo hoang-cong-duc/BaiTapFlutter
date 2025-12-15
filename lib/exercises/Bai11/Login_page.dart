@@ -31,7 +31,6 @@ class _LoginProfileState extends State<LoginProfile> {
 
       setState(() => _isLoading = true);
 
-      // 🔐 GIẢ LẬP LOGIN (bất kỳ tài khoản nào cũng được)
       int? userId = await loginApi.login(
         _userCtl.text.trim(),
         _passCtl.text.trim(),
@@ -83,7 +82,6 @@ class _LoginProfileState extends State<LoginProfile> {
             children: [
               const SizedBox(height: 120),
 
-              // ===== USERNAME =====
               TextFormField(
                 controller: _userCtl,
                 decoration: InputDecoration(
@@ -103,7 +101,6 @@ class _LoginProfileState extends State<LoginProfile> {
 
               const SizedBox(height: 20),
 
-              // ===== PASSWORD =====
               TextFormField(
                 controller: _passCtl,
                 obscureText: _obscurePassword,
@@ -138,7 +135,6 @@ class _LoginProfileState extends State<LoginProfile> {
 
               const SizedBox(height: 30),
 
-              // ===== BUTTON =====
               SizedBox(
                 height: 48,
                 width: double.infinity,

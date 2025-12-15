@@ -14,7 +14,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.blue,
       ),
       body: FutureBuilder(
-        future: loginApi.getUser(userId), // ✅ ĐÚNG TÊN
+        future: loginApi.getUser(userId), 
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Center(child: CircularProgressIndicator());

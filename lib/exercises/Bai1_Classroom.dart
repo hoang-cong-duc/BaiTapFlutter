@@ -48,7 +48,6 @@ class ClassItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 📘 Icon lớp học
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
@@ -64,7 +63,6 @@ class ClassItem extends StatelessWidget {
 
           const SizedBox(width: 12),
 
-          // 📄 Thông tin lớp
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,7 +97,6 @@ class ClassItem extends StatelessWidget {
             ),
           ),
 
-          // ⋮ Menu
           IconButton(
             onPressed: () {},
             icon: const Icon(

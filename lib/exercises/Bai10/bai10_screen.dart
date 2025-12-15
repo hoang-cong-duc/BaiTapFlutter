@@ -10,8 +10,6 @@ class Ex10Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ❗ CHỈ BỌC ProductProvider
-    // CartProvider ĐÃ BỌC Ở main.dart
     return ChangeNotifierProvider(
       create: (_) => ProductProvider()..loadProducts(),
       child: const _Ex10View(),
